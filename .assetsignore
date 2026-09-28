@@ -1,0 +1,15 @@
+# Not public site files. _redirects and _headers are already skipped by Wrangler.
+/src
+/test
+/functions
+/wrangler.jsonc
+/wrangler.toml
+/package.json
+/package-lock.json
+/node_modules
+/.wrangler
+/.dev.vars
+/.git
+/.github
+/.gitignore
+/README.md
