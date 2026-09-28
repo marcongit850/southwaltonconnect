@@ -21,17 +21,20 @@
       <p>South Walton residents, property owners, businesses and visitors are invited to share their views about a potential additional connection between Scenic 30A and US 98.</p>
     </div>
   </header>
+  <figure class="survey-banner">
+    <img src="../images/forest-road.jpg" alt="Sandy forest road through longleaf pine in Point Washington State Forest" width="1600" height="900">
+  </figure>
   <section class="section">
     <div class="wrap">
       <form id="survey-form" class="survey-form" action="/api/feedback" method="post">
-        <p class="kicker">Take the community survey below</p>
+        <h2>TAKE THE COMMUNITY SURVEY BELOW</h2>
         <div class="hp-field" aria-hidden="true">
           <label for="hp-field">Leave this field empty</label>
           <input id="hp-field" name="hp_field" type="text" tabindex="-1" autocomplete="off" value="">
         </div>
 
-        <label class="stack" for="first-name">First name <span class="field-note">(required)</span></label>
-        <input id="first-name" name="first_name" type="text" required maxlength="80" autocomplete="given-name">
+        <label class="stack" for="first-name">First name</label>
+        <input id="first-name" name="first_name" type="text" maxlength="80" autocomplete="given-name">
 
         <fieldset>
           <legend>What best describes your connection to South Walton? Select all that apply.</legend>
@@ -159,7 +162,7 @@
 
         <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
         <div class="form-actions">
-          <button class="button solid" type="submit">Submit survey</button>
+          <button class="button solid" type="submit">Submit</button>
         </div>
         <p class="note">About this survey: This is an independent community survey and is not an official Walton County survey. Participation is voluntary. Results reflect the people who choose to participate and should not be interpreted as a scientific or statistically representative poll of Walton County residents.</p>
       </form>

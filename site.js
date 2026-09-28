@@ -66,8 +66,9 @@
       setStatus("Could not send that response.", "is-error");
       return;
     }
-    if (!firstName) {
-      setStatus("Please add your first name.", "is-error");
+    var answered = firstName || email || concerns || issues.length || checkedValues("connection").length || radioValue("area") || radioValue("congestion") || radioValue("watersound") || radioValue("needs_connector") || radioValue("d2_opinion") || radioValue("protections_required") || radioValue("protections_effect") || radioValue("support_if_prohibited") || radioValue("limited_access_effect") || radioValue("closest_statement");
+    if (!answered) {
+      setStatus("Please add a response.", "is-error");
       form.querySelector("#first-name").focus();
       return;
     }
@@ -141,7 +142,7 @@
     }).then(function () {
       if (submit && !form.hidden) {
         submit.disabled = false;
-        submit.textContent = "Submit survey";
+        submit.textContent = "Submit";
       }
     });
   });

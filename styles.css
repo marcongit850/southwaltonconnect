@@ -224,6 +224,15 @@ p { text-wrap: pretty; }
 .page-hero p { max-width: 42rem; margin: 0; color: #e7f0e4; }
 .page-hero .kicker { color: #d7e6c8; }
 
+.survey-banner { margin: 0; background: var(--forest-deep); }
+.survey-banner img {
+  display: block;
+  width: 100%;
+  max-height: 28rem;
+  object-fit: cover;
+  object-position: center 55%;
+}
+
 .actions { display: flex; flex-wrap: wrap; gap: 0.7rem; }
 .button {
   display: inline-block;

@@ -158,7 +158,7 @@ function resendFailure(status, result) {
 }
 
 function surveyText(firstName, answers, email) {
-  const lines = [`First name: ${firstName}`];
+  const lines = [`First name: ${firstName || "(not provided)"}`];
   for (const [key, label] of QUESTIONS) {
     if (key === "email") continue;
     const value = answers[key];
@@ -216,7 +216,7 @@ export async function handleFeedback(request, env = {}) {
     return reply({ ok: false, error: "Could not read that response." }, 400);
   }
   if (!raw.trim()) {
-    return reply({ ok: false, error: "Please add your first name." }, 400);
+    return reply({ ok: false, error: "Please add a response." }, 400);
   }
   if (raw.length > MAX_BODY) {
     return reply({ ok: false, error: "That response is too long." }, 413);
@@ -247,7 +247,17 @@ export async function handleFeedback(request, env = {}) {
   }
 
   const { firstName, answers, email } = readForm(data);
-  if (!firstName) return reply({ ok: false, error: "Please add your first name." }, 400);
+  const answered =
+    firstName ||
+    email ||
+    answers.concerns ||
+    answers.connection.length ||
+    answers.issues.length ||
+    QUESTIONS.some(([key]) => {
+      if (key === "connection" || key === "issues" || key === "concerns" || key === "email") return false;
+      return Boolean(answers[key]);
+    });
+  if (!answered) return reply({ ok: false, error: "Please add a response." }, 400);
   if (firstName.length > 80) return reply({ ok: false, error: "That name is too long." }, 400);
   if (email && (!EMAIL_RE.test(email) || email.length > 254)) {
     return reply({ ok: false, error: "Please enter a valid email address, or leave email blank." }, 400);
@@ -284,7 +294,9 @@ export async function handleFeedback(request, env = {}) {
   const payload = {
     from: FROM,
     to: [to],
-    subject: `South Walton Connect survey from ${firstName}`,
+    subject: firstName
+      ? `South Walton Connect survey from ${firstName}`
+      : "South Walton Connect community survey",
     text: surveyText(firstName, answers, email),
   };
   if (email) payload.reply_to = email;

@@ -117,11 +117,28 @@ await check("sets reply-to when an email is provided", async () => {
   assert.equal(payload.reply_to, "ada@example.com");
 });
 
-await check("rejects a missing first name", async () => {
-  installFetch(async () => { throw new Error("should not send"); });
+await check("accepts a survey without a first name", async () => {
+  installFetch(async () => okResend());
   const { response, json } = await post({ ...valid, first_name: "  " }, { ip: "203.0.113.42" });
+  assert.equal(response.status, 200);
+  assert.equal(json.ok, true);
+  const payload = JSON.parse(fetchCalls[0].init.body);
+  assert.equal(payload.subject, "South Walton Connect community survey");
+  assert.match(payload.text, /First name: \(not provided\)/);
+});
+
+await check("rejects a survey with no answers", async () => {
+  installFetch(async () => { throw new Error("should not send"); });
+  const { response, json } = await post({
+    first_name: "",
+    connection: [],
+    issues: [],
+    concerns: "",
+    email: "",
+    hp_field: "",
+  }, { ip: "203.0.113.48" });
   assert.equal(response.status, 400);
-  assert.match(json.error, /first name/i);
+  assert.match(json.error, /response/i);
   assert.equal(fetchCalls.length, 0);
 });
 
