@@ -1,0 +1,8 @@
+{
+  "name": "southwaltonconnect",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node test/feedback-function.test.mjs && node test/pages.test.mjs"
+  }
+}

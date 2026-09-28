@@ -1,0 +1,18 @@
+{
+  // Cloudflare Worker plus static assets. The name stays southwaltonconnect so
+  // the existing Workers Builds project keeps deploying this repository.
+  // An assets-only Worker has no script, so Cloudflare refuses variables
+  // ("Variables cannot be added to a Worker that only has static assets").
+  // "main" is what makes CONTACT_EMAIL and RESEND_API_KEY possible.
+  // Do not put those values here.
+  "name": "southwaltonconnect",
+  "main": "src/worker.js",
+  "compatibility_date": "2026-09-28",
+  "assets": {
+    "directory": ".",
+    "binding": "ASSETS",
+    // Only the survey route invokes the Worker. Static pages stay on the free,
+    // unlimited asset path (Workers Free is 100,000 Worker requests per day).
+    "run_worker_first": ["/api/feedback", "/api/feedback/"]
+  }
+}

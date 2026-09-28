@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Public Feedback · South Walton Connect</title>
+  <meta name="description" content="Independent community survey on a potential additional connection between Scenic 30A and US 98.">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@600;700&amp;family=Wix+Madefor+Text:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<script src="../header.js"></script>
+<main id="content">
+  <header class="survey-hero">
+    <div class="survey-hero-copy">
+      <h1>Have Your Say on the South Walton Connector</h1>
+      <p>South Walton residents, property owners, businesses and visitors are invited to share their views about a potential additional connection between Scenic 30A and US 98.</p>
+    </div>
+    <img src="../images/forest-road.jpg" alt="Sandy forest road through longleaf pine in Point Washington State Forest" width="1800" height="1012">
+  </header>
+  <section class="section">
+    <div class="wrap">
+      <form id="survey-form" class="survey-form" action="/api/feedback" method="post">
+        <h2>TAKE THE COMMUNITY SURVEY BELOW</h2>
+        <div class="hp-field" aria-hidden="true">
+          <label for="hp-field">Leave this field empty</label>
+          <input id="hp-field" name="hp_field" type="text" tabindex="-1" autocomplete="off" value="">
+        </div>
+
+        <label class="stack" for="first-name">First name</label>
+        <input id="first-name" name="first_name" type="text" maxlength="80" autocomplete="given-name">
+
+        <fieldset>
+          <legend>What best describes your connection to South Walton? Select all that apply.</legend>
+          <label class="choice"><input type="checkbox" name="connection" value="I live in South Walton full-time"> I live in South Walton full-time</label>
+          <label class="choice"><input type="checkbox" name="connection" value="I live in South Walton part-time"> I live in South Walton part-time</label>
+          <label class="choice"><input type="checkbox" name="connection" value="I own property in South Walton"> I own property in South Walton</label>
+          <label class="choice"><input type="checkbox" name="connection" value="I own or operate a business in South Walton"> I own or operate a business in South Walton</label>
+          <label class="choice"><input type="checkbox" name="connection" value="I work in South Walton"> I work in South Walton</label>
+          <label class="choice"><input type="checkbox" name="connection" value="I regularly visit South Walton"> I regularly visit South Walton</label>
+          <label class="choice"><input type="checkbox" name="connection" value="Other"> Other</label>
+        </fieldset>
+
+        <fieldset>
+          <legend>What area of South Walton are you most closely associated with?</legend>
+          <label class="choice"><input type="radio" name="area" value="Scenic 30A area"> Scenic 30A area</label>
+          <label class="choice"><input type="radio" name="area" value="Santa Rosa Beach"> Santa Rosa Beach</label>
+          <label class="choice"><input type="radio" name="area" value="Miramar Beach"> Miramar Beach</label>
+          <label class="choice"><input type="radio" name="area" value="Freeport"> Freeport</label>
+          <label class="choice"><input type="radio" name="area" value="Defuniak Springs"> Defuniak Springs</label>
+          <label class="choice"><input type="radio" name="area" value="Other Walton County area"> Other Walton County area</label>
+          <label class="choice"><input type="radio" name="area" value="Outside Walton County"> Outside Walton County</label>
+          <label class="choice"><input type="radio" name="area" value="Prefer not to say"> Prefer not to say</label>
+        </fieldset>
+
+        <fieldset>
+          <legend>How serious do you believe traffic congestion on Scenic Highway 30A is?</legend>
+          <label class="choice"><input type="radio" name="congestion" value="Very serious"> Very serious</label>
+          <label class="choice"><input type="radio" name="congestion" value="Somewhat serious"> Somewhat serious</label>
+          <label class="choice"><input type="radio" name="congestion" value="Not very serious"> Not very serious</label>
+          <label class="choice"><input type="radio" name="congestion" value="Not a problem"> Not a problem</label>
+          <label class="choice"><input type="radio" name="congestion" value="Unsure"> Unsure</label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Are you aware that the nearby route on Watersound Parkway is a private road and is not a Walton County-maintained public connector road between Scenic 30A and US 98?</legend>
+          <label class="choice"><input type="radio" name="watersound" value="Yes, I was aware"> Yes, I was aware</label>
+          <label class="choice"><input type="radio" name="watersound" value="No, I was not aware"> No, I was not aware</label>
+          <label class="choice"><input type="radio" name="watersound" value="I was unsure"> I was unsure</label>
+          <label class="choice"><input type="radio" name="watersound" value="I am not familiar with the WaterColor route"> I am not familiar with the WaterColor route</label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Do you believe South Walton needs an additional public north-south connection between Scenic Highway 30A and US 98?</legend>
+          <label class="choice"><input type="radio" name="needs_connector" value="Strongly support"> Strongly support</label>
+          <label class="choice"><input type="radio" name="needs_connector" value="Support"> Support</label>
+          <label class="choice"><input type="radio" name="needs_connector" value="Neutral / unsure"> Neutral / unsure</label>
+          <label class="choice"><input type="radio" name="needs_connector" value="Oppose"> Oppose</label>
+          <label class="choice"><input type="radio" name="needs_connector" value="Strongly oppose"> Strongly oppose</label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Which transportation issues are most important to you? Select up to three.</legend>
+          <label class="choice"><input type="checkbox" name="issues" value="Traffic congestion"> Traffic congestion</label>
+          <label class="choice"><input type="checkbox" name="issues" value="Hurricane/emergency evacuation"> Hurricane/emergency evacuation</label>
+          <label class="choice"><input type="checkbox" name="issues" value="Emergency response times"> Emergency response times</label>
+          <label class="choice"><input type="checkbox" name="issues" value="Limited north-south connections"> Limited north-south connections</label>
+          <label class="choice"><input type="checkbox" name="issues" value="Bicycle and pedestrian safety"> Bicycle and pedestrian safety</label>
+          <label class="choice"><input type="checkbox" name="issues" value="Environmental impacts"> Environmental impacts</label>
+          <label class="choice"><input type="checkbox" name="issues" value="Development pressure"> Development pressure</label>
+          <label class="choice"><input type="checkbox" name="issues" value="Preserving the character of Scenic 30A"> Preserving the character of Scenic 30A</label>
+          <label class="choice"><input type="checkbox" name="issues" value="Other"> Other</label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Based on what you currently know, what is your opinion of the proposed D2 corridor through Point Washington State Forest?</legend>
+          <label class="choice"><input type="radio" name="d2_opinion" value="Strongly support"> Strongly support</label>
+          <label class="choice"><input type="radio" name="d2_opinion" value="Support"> Support</label>
+          <label class="choice"><input type="radio" name="d2_opinion" value="Neutral / need more information"> Neutral / need more information</label>
+          <label class="choice"><input type="radio" name="d2_opinion" value="Oppose"> Oppose</label>
+          <label class="choice"><input type="radio" name="d2_opinion" value="Strongly oppose"> Strongly oppose</label>
+        </fieldset>
+
+        <fieldset>
+          <legend>If a connector were constructed through Point Washington State Forest, should permanent, legally enforceable protections be required to prohibit commercial and residential development along the State Forest portion of the corridor?</legend>
+          <label class="choice"><input type="radio" name="protections_required" value="Definitely yes"> Definitely yes</label>
+          <label class="choice"><input type="radio" name="protections_required" value="Probably yes"> Probably yes</label>
+          <label class="choice"><input type="radio" name="protections_required" value="Unsure"> Unsure</label>
+          <label class="choice"><input type="radio" name="protections_required" value="Probably no"> Probably no</label>
+          <label class="choice"><input type="radio" name="protections_required" value="Definitely no"> Definitely no</label>
+        </fieldset>
+
+        <fieldset>
+          <legend>If permanent, legally enforceable protections prohibited commercial and residential development along the State Forest portion of the connector, how would that affect your opinion of D2?</legend>
+          <label class="choice"><input type="radio" name="protections_effect" value="Much more supportive"> Much more supportive</label>
+          <label class="choice"><input type="radio" name="protections_effect" value="Somewhat more supportive"> Somewhat more supportive</label>
+          <label class="choice"><input type="radio" name="protections_effect" value="No effect on my opinion"> No effect on my opinion</label>
+          <label class="choice"><input type="radio" name="protections_effect" value="Somewhat less supportive"> Somewhat less supportive</label>
+          <label class="choice"><input type="radio" name="protections_effect" value="Much less supportive"> Much less supportive</label>
+          <label class="choice"><input type="radio" name="protections_effect" value="Unsure"> Unsure</label>
+        </fieldset>
+
+        <fieldset>
+          <legend>If future commercial and residential development along the State Forest portion of the corridor were permanently prohibited, would you support construction of the D2 connector?</legend>
+          <label class="choice"><input type="radio" name="support_if_prohibited" value="Definitely yes"> Definitely yes</label>
+          <label class="choice"><input type="radio" name="support_if_prohibited" value="Probably yes"> Probably yes</label>
+          <label class="choice"><input type="radio" name="support_if_prohibited" value="Unsure"> Unsure</label>
+          <label class="choice"><input type="radio" name="support_if_prohibited" value="Probably no"> Probably no</label>
+          <label class="choice"><input type="radio" name="support_if_prohibited" value="Definitely no"> Definitely no</label>
+        </fieldset>
+
+        <fieldset>
+          <legend>If the State Forest portion of the connector were permanently limited-access with no commercial entrances, residential driveways, subdivision entrances, or new private connecting streets, how would that affect your opinion of D2?</legend>
+          <label class="choice"><input type="radio" name="limited_access_effect" value="Much more supportive"> Much more supportive</label>
+          <label class="choice"><input type="radio" name="limited_access_effect" value="Somewhat more supportive"> Somewhat more supportive</label>
+          <label class="choice"><input type="radio" name="limited_access_effect" value="No effect on my opinion"> No effect on my opinion</label>
+          <label class="choice"><input type="radio" name="limited_access_effect" value="Somewhat less supportive"> Somewhat less supportive</label>
+          <label class="choice"><input type="radio" name="limited_access_effect" value="Much less supportive"> Much less supportive</label>
+          <label class="choice"><input type="radio" name="limited_access_effect" value="Unsure"> Unsure</label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Which statement comes closest to your current view?</legend>
+          <label class="choice"><input type="radio" name="closest_statement" value="South Walton needs another 30A - US 98 connection, even if it crosses State Forest land."> South Walton needs another 30A - US 98 connection, even if it crosses State Forest land.</label>
+          <label class="choice"><input type="radio" name="closest_statement" value="I could support a connection through State Forest land only with strong, permanent environmental and development protections."> I could support a connection through State Forest land only with strong, permanent environmental and development protections.</label>
+          <label class="choice"><input type="radio" name="closest_statement" value="Another connection may be needed, but it should avoid State Forest land."> Another connection may be needed, but it should avoid State Forest land.</label>
+          <label class="choice"><input type="radio" name="closest_statement" value="I do not believe another 30A - US 98 connection is needed."> I do not believe another 30A - US 98 connection is needed.</label>
+          <label class="choice"><input type="radio" name="closest_statement" value="I need more information before forming an opinion."> I need more information before forming an opinion.</label>
+        </fieldset>
+
+        <label class="stack" for="concerns">What concerns, conditions, alternatives, or ideas would you like decision-makers to consider regarding the South Walton Connector?</label>
+        <textarea id="concerns" name="concerns" maxlength="4000"></textarea>
+
+        <label class="stack" for="survey-email">Provide your email if you would like to receive updates about the South Walton Connector and future survey results. <span class="field-note">(optional)</span></label>
+        <input id="survey-email" name="email" type="email" maxlength="254" autocomplete="email" inputmode="email">
+
+        <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+        <div class="form-actions">
+          <button class="button solid" type="submit">Submit</button>
+        </div>
+        <p class="note">About this survey: This is an independent community survey and is not an official Walton County survey. Participation is voluntary. Results reflect the people who choose to participate and should not be interpreted as a scientific or statistically representative poll of Walton County residents.</p>
+      </form>
+      <div id="survey-success" class="survey-success" hidden tabindex="-1">
+        <h2>Survey received</h2>
+        <p>Thank you. Your response is on its way.</p>
+      </div>
+    </div>
+  </section>
+</main>
+<script src="../footer.js"></script>
+<script src="../site.js"></script>
+</body>
+</html>
