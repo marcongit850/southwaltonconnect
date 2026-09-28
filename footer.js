@@ -12,18 +12,13 @@
   }
   var root = depth === 0 ? "./" : "../".repeat(depth);
 
-  var path = location.pathname || "/";
-  if (path.slice(-11) === "/index.html") path = path.slice(0, -10);
-  else if (path.slice(-5) === ".html") path = path.slice(0, path.lastIndexOf("/") + 1);
-  if (path.slice(-1) !== "/") path += "/";
-
   var pages = [
     { href: root, label: "Home" },
     { href: root + "environment/", label: "Environment" },
-    { href: root + "documents/", label: "Documents" },
+    { href: root + "public-feedback/", label: "Community Survey" },
     { href: root + "faq/", label: "FAQ" },
-    { href: root + "public-feedback/", label: "Public Feedback", current: path.indexOf("/public-feedback/") !== -1 },
-    { href: root + "blog/", label: "Blog" }
+    { href: root + "blog/", label: "Blog" },
+    { href: root + "documents/", label: "Documents" }
   ];
 
   var links = pages.map(function (page) {

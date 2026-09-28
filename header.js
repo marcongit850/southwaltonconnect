@@ -20,10 +20,10 @@
   var pages = [
     { href: root, label: "Home", current: path === "/" },
     { href: root + "environment/", label: "Environment", current: path.indexOf("/environment/") !== -1 },
-    { href: root + "documents/", label: "Documents", current: path.indexOf("/documents/") !== -1 },
+    { href: root + "public-feedback/", label: "Community Survey", current: path.indexOf("/public-feedback/") !== -1 },
     { href: root + "faq/", label: "FAQ", current: path.indexOf("/faq/") !== -1 },
-    { href: root + "public-feedback/", label: "Public Feedback", current: path.indexOf("/public-feedback/") !== -1 },
-    { href: root + "blog/", label: "Blog", current: path.indexOf("/blog/") !== -1 }
+    { href: root + "blog/", label: "Blog", current: path.indexOf("/blog/") !== -1 },
+    { href: root + "documents/", label: "Documents", current: path.indexOf("/documents/") !== -1 }
   ];
 
   var links = pages.map(function (page) {
@@ -36,11 +36,7 @@
     '<header class="site-header">',
     '  <div class="wrap header-inner">',
     '    <a class="brand" href="' + root + '">',
-    '      <img class="brand-logo" src="' + root + 'images/logo.png" alt="" width="640" height="329">',
-    '      <span class="brand-text">',
-    '        <span class="brand-kicker">Walton County, Florida</span>',
-    '        <span class="brand-name">South Walton Connect</span>',
-    '      </span>',
+    '      <img class="brand-logo" src="' + root + 'images/logo.png" alt="South Walton Connector" width="900" height="462">',
     '    </a>',
     '    <details class="nav-disclosure">',
     '      <summary class="menu-toggle">Menu</summary>',
