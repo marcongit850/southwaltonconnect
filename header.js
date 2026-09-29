@@ -36,7 +36,8 @@
     '<header class="site-header">',
     '  <div class="wrap header-inner">',
     '    <a class="brand" href="' + root + '">',
-    '      <img class="brand-logo" src="' + root + 'images/logo.png" alt="South Walton Connector" width="900" height="462">',
+    '      <img class="brand-mark" src="' + root + 'images/logo-mark.png" alt="South Walton Connector logo" width="227" height="160">',
+    '      <span class="brand-name"><span>South Walton</span><span>Connector</span></span>',
     '    </a>',
     '    <details class="nav-disclosure">',
     '      <summary class="menu-toggle">Menu</summary>',
@@ -47,4 +48,14 @@
     "  </div>",
     "</header>"
   ].join("\n"));
+
+  var disclosure = document.querySelector(".nav-disclosure");
+  var desktopNav = window.matchMedia("(min-width: 981px)");
+  function syncDesktopNav() {
+    if (!disclosure) return;
+    if (desktopNav.matches) disclosure.setAttribute("open", "");
+    else disclosure.removeAttribute("open");
+  }
+  syncDesktopNav();
+  if (desktopNav.addEventListener) desktopNav.addEventListener("change", syncDesktopNav);
 })();

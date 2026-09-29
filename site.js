@@ -1,8 +1,11 @@
 (function () {
   var details = document.querySelector(".nav-disclosure");
   if (details) {
+    function mobileNav() {
+      return window.matchMedia("(max-width: 980px)").matches;
+    }
     document.addEventListener("keydown", function (event) {
-      if (event.key === "Escape" && details.open) {
+      if (event.key === "Escape" && details.open && mobileNav()) {
         details.removeAttribute("open");
         var summary = details.querySelector("summary");
         if (summary) summary.focus();
@@ -10,7 +13,7 @@
     });
     details.querySelectorAll("a").forEach(function (link) {
       link.addEventListener("click", function () {
-        details.removeAttribute("open");
+        if (mobileNav()) details.removeAttribute("open");
       });
     });
   }
