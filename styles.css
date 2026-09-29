@@ -721,73 +721,50 @@ body.page-paper .doc-meta { color: var(--muted); }
 body.page-paper .site-footer { background: var(--forest); color: #e7f0ea; }
 body.page-paper .site-footer a { color: var(--lime); }
 
-/* Environment only: larger route image and type closer to the Wix page. */
+/* Environment only: slightly larger type, and a route diagram that breaks out of the text column. */
 body.page-environment main {
   font-size: 1.0625rem;
-  line-height: 1.48;
-}
-body.page-environment .page-hero {
-  padding: 3.15rem 0 0.2rem;
-  text-align: center;
+  line-height: 1.55;
 }
 body.page-environment .page-hero h1 {
-  font-size: clamp(1.9rem, 4.9vw, 4.35rem);
-  line-height: 1.02;
-  letter-spacing: -0.012em;
-  margin-bottom: 0.9rem;
-}
-body.page-environment .page-hero .kicker {
-  max-width: none;
-  margin-bottom: 0.7rem;
+  font-size: clamp(2.1rem, 4.3vw, 3.85rem);
+  line-height: 1.08;
 }
 body.page-environment .page-hero p:not(.kicker) {
-  max-width: 40rem;
-  margin-inline: auto;
-  font-size: clamp(1.05rem, 1.4vw, 1.27rem);
-  line-height: 1.35;
-}
-body.page-environment .prose {
-  max-width: var(--wrap);
-}
-body.page-environment .prose > p:first-child {
-  max-width: 54rem;
-  margin-inline: auto;
-  text-align: center;
+  line-height: 1.45;
 }
 body.page-environment .prose h2 {
-  font-size: clamp(1.75rem, 3.65vw, 3.25rem);
-  line-height: 1.08;
-  letter-spacing: -0.012em;
-  margin: 2.6rem 0 0.85rem;
-}
-body.page-environment .prose h3 {
-  font-size: clamp(1.45rem, 2.35vw, 2.1rem);
-  line-height: 1.15;
-  letter-spacing: -0.01em;
-  margin: 2.05rem 0 0.6rem;
-}
-body.page-environment .lock h3 {
-  font-size: clamp(1.08rem, 1.5vw, 1.4rem);
-  letter-spacing: 0.02em;
-  line-height: 1.2;
-  margin: 0 0 0.55rem;
-}
-body.page-environment .quote {
-  font-size: clamp(1.15rem, 1.45vw, 1.28rem);
-  line-height: 1.35;
-  margin: 1rem 0 1.15rem;
+  font-size: clamp(1.8rem, 3.15vw, 2.8rem);
+  line-height: 1.12;
+  margin: 1.9rem 0 0.8rem;
 }
 body.page-environment .panel {
-  margin: 1.55rem 0 1.2rem;
+  width: min(61.25rem, calc(100vw - 2.4rem));
+  max-width: none;
+  margin-top: 1.6rem;
+  margin-bottom: 1.15rem;
+  margin-left: calc((100% - min(61.25rem, 100vw - 2.4rem)) / 2);
 }
-body.page-environment .locks {
-  margin: 1.4rem 0 1.55rem;
+body.page-environment .objective {
+  width: fit-content;
+  max-width: 100%;
+  margin: 0.35rem auto 1.7rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 3px solid var(--lime);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.045em;
+  font-size: 0.98rem;
+  font-weight: 600;
+  line-height: 1.45;
+  color: white;
+}
+body.page-environment .objective strong {
+  font-weight: 700;
 }
 @media (min-width: 800px) {
   body.page-environment main {
     font-size: 1.125rem;
-    line-height: 1.38;
+    line-height: 1.5;
   }
-  body.page-environment .locks { gap: 1.45rem; }
-  body.page-environment .lock { padding: 1.15rem 1.3rem 1.25rem; }
 }
