@@ -424,7 +424,7 @@ p { text-wrap: pretty; }
   font-size: 1.05rem;
 }
 .location-map {
-  margin: 0.2rem auto 1.6rem;
+  margin: 0.2rem auto 0;
   max-width: 980px;
 }
 .location-map img {
@@ -433,11 +433,6 @@ p { text-wrap: pretty; }
   height: auto;
   border-radius: 10px;
 }
-.route-note {
-  max-width: 46rem;
-  color: var(--muted);
-}
-.route-note p { margin: 0 0 0.8rem; }
 
 @media (max-width: 800px) {
   .hero {
