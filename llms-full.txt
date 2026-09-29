@@ -1,0 +1,26 @@
+# South Walton Connect
+
+> Independent community information site about the proposed South Walton Connector, a potential additional connection between Scenic Highway 30A and US 98 in Walton County, Florida. Not an official Walton County website, and not affiliated with the project engineers.
+
+South Walton Connect is a community project. It collects the public record, environmental questions, and an independent survey about a studied north-south road in South Walton. These pages describe the proposal. They do not speak for Walton County or the project engineers.
+
+The home page is a timeline from the 2006 Genesis 30A Traffic Study through September 22, 2025, when the connector was no longer carried in the adopted FY2026–30 Five-Year Work Plan. In 2023, county materials identified Alternative D2 as the preferred build alternative: a two-lane roadway with 11-foot travel lanes and a 12-foot multi-use path, from CR 30A through Point Washington State Forest to US 98. The FAQ states that the road has not been approved for construction.
+
+The environment page covers concerns about wetlands, habitat, prescribed burning, and development pressure along a forest corridor. It also describes a limited-access protection idea drawn from community materials. That idea is not an adopted policy. The documents page links public records, including the 2019 purpose and need statement, public-meeting materials, the proposed typical section, five-year work plans, and the Okaloosa-Walton 2045 Long Range Transportation Plan. The blog has one post, published September 17, 2026 and updated September 18, 2026, on what the project is and where it stands.
+
+The public-feedback page is an independent community survey. It is not an official Walton County survey. Participation is voluntary, and the results are not a scientific poll of county residents.
+
+## Pages
+
+- [Home](https://southwaltonconnect.com/): Timeline of the proposed South Walton Connector (2006 through September 22, 2025) and the D2 preferred route between Scenic 30A and US 98.
+- [Environment](https://southwaltonconnect.com/environment/): Concerns about a corridor through Point Washington State Forest, and a limited-access idea that is a community proposal, not adopted policy.
+- [Documents](https://southwaltonconnect.com/documents/): Public county records for the connector, including purpose and need, meeting materials, and five-year work plans.
+- [FAQ](https://southwaltonconnect.com/faq/): Answers about the proposed connector, Alternative D2, construction status, and forest concerns.
+- [Community survey](https://southwaltonconnect.com/public-feedback/): Independent community survey on a potential Scenic 30A to US 98 connection. Not an official Walton County survey.
+- [Blog](https://southwaltonconnect.com/blog/): Notes on the studied road between Scenic Highway 30A and US 98.
+- [Understanding the South Walton Connector Road Project](https://southwaltonconnect.com/blog/public-input-on-south-walton-connector-road-development/): What the connector is, where Alternative D2 would go, and where the project stands.
+
+## Also
+
+- [Short index](https://southwaltonconnect.com/llms.txt): Shorter version of this file.
+- [Sitemap](https://southwaltonconnect.com/sitemap.xml): Index of the public pages on this site.
