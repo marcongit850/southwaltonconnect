@@ -274,8 +274,30 @@ p { text-wrap: pretty; }
   min-height: 22rem;
 }
 .survey-hero-copy {
-  padding: 2.6rem 0 2rem;
-  max-width: 38rem;
+  padding: 2.6rem 6.15% 1.75rem;
+  max-width: 40rem;
+}
+.survey-hero-copy p {
+  margin: 0 0 1.7rem;
+}
+.survey-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 0;
+  padding: 0.85rem 1.15rem;
+  background: var(--lime);
+  color: var(--forest);
+  border-radius: 12px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(0.92rem, 3.6vw, 1.2rem);
+  line-height: 1.25;
+  text-wrap: balance;
 }
 .survey-hero img {
   width: 100%;
@@ -294,8 +316,17 @@ p { text-wrap: pretty; }
   .survey-hero-copy {
     width: min(36rem, calc(100% - 2.4rem));
     margin-left: auto;
-    padding: 3.2rem 2rem 3rem 1.2rem;
+    padding: 3.2rem 1.15rem 2.4rem 1.2rem;
     max-width: none;
+  }
+  .survey-hero-copy p { margin-bottom: 1.85rem; }
+  .survey-cta {
+    width: 100%;
+    padding: 0.72rem 1.15rem;
+    font-size: clamp(0.98rem, 1.15vw, 1.2rem);
+    line-height: 1.35;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
   }
   .survey-hero img { max-height: none; min-height: 26rem; }
 }
@@ -614,7 +645,6 @@ p { text-wrap: pretty; }
   padding: 0;
   box-shadow: none;
 }
-.survey-form h2 { text-transform: uppercase; letter-spacing: 0.01em; }
 .survey-form fieldset {
   border: 0;
   border-top: 1px solid var(--line);
