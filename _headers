@@ -1,0 +1,6 @@
+# .txt is already text/plain. These rules make the AI index files explicit.
+/llms.txt
+  Content-Type: text/plain; charset=utf-8
+
+/llms-full.txt
+  Content-Type: text/plain; charset=utf-8

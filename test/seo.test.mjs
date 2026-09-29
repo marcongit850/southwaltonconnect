@@ -193,6 +193,26 @@ assert.equal(attr(postHtml, /<meta property="article:modified_time" content="([^
 const robots = read("robots.txt");
 assert.match(robots, /User-agent: \*\nAllow: \/\n/);
 assert.match(robots, /Sitemap: https:\/\/southwaltonconnect\.com\/sitemap\.xml/);
+assert.equal(robots.includes("Disallow"), false);
+assert.match(robots, /https:\/\/southwaltonconnect\.com\/llms\.txt/);
+assert.match(robots, /https:\/\/southwaltonconnect\.com\/llms-full\.txt/);
+for (const agent of [
+  "Googlebot",
+  "Bingbot",
+  "GPTBot",
+  "ChatGPT-User",
+  "Google-Extended",
+  "ClaudeBot",
+  "anthropic-ai",
+  "PerplexityBot",
+  "Applebot-Extended",
+  "Bytespider",
+  "CCBot",
+  "meta-externalagent",
+  "FacebookBot",
+]) {
+  assert.match(robots, new RegExp(`User-agent: ${agent}\\nAllow: /\\n`), agent);
+}
 
 const sitemap = read("sitemap.xml");
 const locs = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
@@ -200,9 +220,42 @@ assert.deepEqual(locs, pages.map(([, url]) => url));
 assert.equal(locs.some((url) => url.includes("/groups")), false);
 assert.equal(sitemap.includes("/api/"), false);
 
+const llms = read("llms.txt");
+const llmsFull = read("llms-full.txt");
+const liveUrls = new Set([
+  ...locs,
+  `${ORIGIN}/llms.txt`,
+  `${ORIGIN}/llms-full.txt`,
+  `${ORIGIN}/sitemap.xml`,
+]);
+for (const file of [llms, llmsFull]) {
+  for (const url of locs) {
+    assert.equal(file.includes(url), true, url);
+  }
+  const linked = [...file.matchAll(/https:\/\/southwaltonconnect\.com[^)\s]*/g)].map((match) => match[0]);
+  assert.ok(linked.length >= locs.length);
+  for (const url of linked) {
+    assert.equal(liveUrls.has(url), true, "unexpected url " + url);
+  }
+  assert.match(file, /independent community/i);
+  assert.match(file, /Not an official Walton County/);
+  assert.match(file, /community survey/i);
+  assert.equal(file.includes("/api/"), false);
+  assert.equal(file.includes("/groups"), false);
+}
+assert.ok(llmsFull.length > llms.length);
+const pageLines = (text) => text.split("## Pages\n")[1].split("## Also")[0].trim();
+assert.equal(pageLines(llms), pageLines(llmsFull));
+
+const headers = read("_headers");
+assert.match(headers, /\/llms\.txt\n {2}Content-Type: text\/plain; charset=utf-8\n/);
+assert.match(headers, /\/llms-full\.txt\n {2}Content-Type: text\/plain; charset=utf-8\n/);
+
 const ignore = read(".assetsignore");
 assert.equal(ignore.includes("robots.txt"), false);
 assert.equal(ignore.includes("sitemap.xml"), false);
+assert.equal(ignore.includes("llms.txt"), false);
+assert.equal(ignore.includes("llms-full.txt"), false);
 const wrangler = read("wrangler.jsonc");
 assert.match(wrangler, /"name": "southwaltonconnect"/);
 assert.match(wrangler, /"directory": "\."/);
