@@ -3,6 +3,6 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node test/feedback-function.test.mjs && node test/pages.test.mjs"
+    "test": "node test/feedback-function.test.mjs && node test/pages.test.mjs && node test/seo.test.mjs"
   }
 }
