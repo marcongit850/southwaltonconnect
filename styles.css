@@ -713,6 +713,7 @@ body.page-paper .menu-toggle { color: white; }
 body.page-paper .page-hero,
 body.page-paper .page-hero h1,
 body.page-paper .page-hero p { color: var(--forest); }
+body.page-paper .section-intro { color: var(--forest); }
 body.page-paper .kicker { color: var(--forest-mid); }
 body.page-paper a { color: var(--forest-mid); }
 body.page-paper .doc-card,
