@@ -36,7 +36,7 @@
     '<header class="site-header">',
     '  <div class="wrap header-inner">',
     '    <a class="brand" href="' + root + '">',
-    '      <img class="brand-mark" src="' + root + 'images/logo-mark.png" alt="" width="227" height="160">',
+    '      <img class="brand-mark" src="' + root + 'images/logo-mark.png" alt="South Walton Connector logo" width="227" height="160">',
     '      <span class="brand-name"><span>South Walton</span><span>Connector</span></span>',
     '    </a>',
     '    <details class="nav-disclosure">',
