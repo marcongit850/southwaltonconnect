@@ -579,7 +579,6 @@ p { text-wrap: pretty; }
 .doc-card p { margin: 0.4rem 0; color: #e7f0ea; }
 .doc-actions { display: flex; flex-wrap: wrap; gap: 0.8rem 1rem; margin-top: 0.8rem; }
 .doc-actions a { font-weight: 700; color: var(--lime); }
-.pending { color: var(--forest-soft); font-style: italic; }
 
 .post-list { display: grid; gap: 1rem; }
 .post-card {
@@ -709,6 +708,7 @@ body.page-paper .menu-toggle { color: white; }
 body.page-paper .page-hero,
 body.page-paper .page-hero h1,
 body.page-paper .page-hero p { color: var(--forest); }
+body.page-paper .section-intro { color: var(--forest); }
 body.page-paper .kicker { color: var(--forest-mid); }
 body.page-paper a { color: var(--forest-mid); }
 body.page-paper .doc-card,
@@ -718,6 +718,5 @@ body.page-paper .doc-card p { color: white; }
 body.page-paper .doc-card a,
 body.page-paper .doc-kicker { color: var(--lime); }
 body.page-paper .doc-meta { color: var(--muted); }
-body.page-paper .pending { color: #5c6b64; }
 body.page-paper .site-footer { background: var(--forest); color: #e7f0ea; }
 body.page-paper .site-footer a { color: var(--lime); }

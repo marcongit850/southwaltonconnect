@@ -168,8 +168,7 @@ const documents = jsonLd(read("documents/index.html"));
 assert.equal(documents["@graph"][0]["@type"], "CollectionPage");
 const docList = documents["@graph"].find((node) => node["@type"] === "ItemList");
 const docHeadings = [...read("documents/index.html").matchAll(/<article class="doc-card">[\s\S]*?<h3>(.*?)<\/h3>/g)]
-  .map((match) => decode(match[1].trim()))
-  .filter((name) => !["Public Comments", "Environmental & Agency Documents", "Public Meeting Materials", "County Meeting Records"].includes(name));
+  .map((match) => decode(match[1].trim()));
 assert.deepEqual(docList.itemListElement.map((item) => item.name), docHeadings);
 assert.equal(docList.numberOfItems, 8);
 assert.equal(JSON.stringify(documents).includes("Document pending"), false);
