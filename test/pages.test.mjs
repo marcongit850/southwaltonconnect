@@ -20,6 +20,13 @@ for (const [key, path] of Object.entries(files)) {
 }
 
 assert.match(text.home, /The South Walton Connector/);
+assert.match(text.home, /images\/hero-map\.jpg/);
+assert.match(text.home, /images\/southwalton-hero-side\.mp4/);
+assert.match(text.home, /images\/southwalton-hero-side-poster\.jpg/);
+const heroVideo = text.home.match(/<video\b[^>]*>/i);
+assert.ok(heroVideo, "home hero video");
+assert.match(heroVideo[0], /\bcontrols\b/);
+assert.equal(/\bautoplay\b/i.test(heroVideo[0]), false);
 assert.match(text.home, /September 22, 2025/);
 assert.match(text.home, /The Proposed Route/);
 assert.match(text.home, /11-foot travel lanes/);
@@ -88,5 +95,12 @@ for (const path of pdfs) {
 
 const homeBytes = await readFile("index.html");
 assert.ok(homeBytes.length > 1000);
+
+const heroClip = await readFile("images/southwalton-hero-side.mp4");
+assert.equal(heroClip.subarray(4, 8).toString(), "ftyp");
+assert.ok(heroClip.length > 100000);
+const heroPoster = await readFile("images/southwalton-hero-side-poster.jpg");
+assert.equal(heroPoster[0], 0xff);
+assert.equal(heroPoster[1], 0xd8);
 
 console.log("ok pages");
