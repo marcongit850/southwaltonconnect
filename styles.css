@@ -219,12 +219,21 @@ p { text-wrap: pretty; }
   position: relative;
   isolation: isolate;
   display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  background: var(--forest);
+  color: white;
+  overflow: hidden;
+}
+.hero-visual {
+  position: relative;
+  isolation: isolate;
+  display: flex;
   align-items: center;
+  flex: 1 1 auto;
   min-height: calc(100svh - 4.6rem);
   min-height: calc(100dvh - 4.6rem);
   padding: 4.5rem 0 5rem;
-  background: var(--forest);
-  color: white;
   overflow: hidden;
 }
 .hero-bg {
@@ -232,6 +241,7 @@ p { text-wrap: pretty; }
   inset: 0;
   width: 100%;
   height: 100%;
+  max-width: none;
   object-fit: cover;
   object-position: center 46%;
   opacity: 0.31;
@@ -239,6 +249,55 @@ p { text-wrap: pretty; }
   pointer-events: none;
 }
 .hero-copy { max-width: 46rem; }
+.hero-side {
+  display: flex;
+  justify-content: center;
+  padding: 0 1rem 1.4rem;
+  background: var(--forest);
+}
+.hero-side-video {
+  display: block;
+  width: min(100%, 17.5rem);
+  height: auto;
+  aspect-ratio: 9 / 16;
+  background: #0a241c;
+  border-radius: 12px;
+}
+@media (min-width: 1040px) {
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) min(calc((100dvh - 4.6rem) * 9 / 16), 42vw);
+    min-height: calc(100svh - 4.6rem);
+    min-height: calc(100dvh - 4.6rem);
+  }
+  .hero-visual {
+    min-width: 0;
+    min-height: 0;
+    height: 100%;
+  }
+  .hero-visual .hero-copy {
+    width: auto;
+    margin-left: max(1.2rem, calc((100vw - var(--wrap)) / 2));
+    margin-right: 1.5rem;
+  }
+  .hero-side {
+    position: relative;
+    padding: 0;
+    min-height: 34rem;
+    background: transparent;
+  }
+  .hero-side-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    aspect-ratio: auto;
+    border-radius: 0;
+    object-fit: cover;
+    object-position: center;
+  }
+}
 .hero h1 {
   font-size: clamp(3.15rem, 5.15vw, 4.85rem);
   line-height: 0.98;
@@ -465,12 +524,14 @@ p { text-wrap: pretty; }
   border-radius: 10px;
 }
 
-@media (max-width: 800px) {
-  .hero {
+@media (max-width: 1039px) {
+  .hero-visual {
     min-height: 34rem;
     align-items: flex-end;
-    padding: 3.2rem 0 2.6rem;
+    padding: 3.2rem 0 2.2rem;
   }
+}
+@media (max-width: 800px) {
   .hero h1 { font-size: clamp(2.6rem, 12vw, 3.4rem); max-width: 9em; }
   .timeline {
     display: block;
