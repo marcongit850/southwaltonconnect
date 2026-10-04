@@ -3,6 +3,12 @@
 // Delivery uses the Resend HTTP API with RESEND_API_KEY. Neither value is
 // returned to the browser.
 //
+// After Resend accepts the message, one JSON row is posted to
+// GOOGLE_SHEETS_WEBHOOK_URL with GOOGLE_SHEETS_WEBHOOK_TOKEN. Those are
+// Worker secrets. If either is missing, or the webhook fails, the form
+// still succeeds when the email went out. The email is sent before the
+// sheet request starts.
+//
 // FROM is Resend's free onboarding sender, which works without a verified
 // domain. It can deliver only to the Resend account's own address until a
 // domain is verified. After that, switch FROM to an address on the verified
@@ -161,6 +167,41 @@ function resendFailure(status, result) {
   return { status: 502, error: "Could not send that response. Please try again." };
 }
 
+function sheetRow(firstName, answers, email) {
+  return {
+    first_name: firstName,
+    email,
+    connection: answers.connection.join(", "),
+    area: answers.area,
+    congestion: answers.congestion,
+    watersound: answers.watersound,
+    needs_connector: answers.needs_connector,
+    issues: answers.issues.join(", "),
+    d2_opinion: answers.d2_opinion,
+    protections_required: answers.protections_required,
+    protections_effect: answers.protections_effect,
+    support_if_prohibited: answers.support_if_prohibited,
+    limited_access_effect: answers.limited_access_effect,
+    closest_statement: answers.closest_statement,
+    concerns: answers.concerns,
+  };
+}
+
+async function recordSheet(env, row) {
+  const url = env && String(env.GOOGLE_SHEETS_WEBHOOK_URL || "").trim();
+  const token = env && String(env.GOOGLE_SHEETS_WEBHOOK_TOKEN || "").trim();
+  if (!url || !token) return;
+  try {
+    await fetch(url, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ token, ...row }),
+    });
+  } catch {
+    // The email already went out. A sheet miss must not change that result.
+  }
+}
+
 function surveyText(firstName, answers, email) {
   const lines = [`First name: ${firstName || "(not provided)"}`];
   for (const [key, label] of QUESTIONS) {
@@ -188,7 +229,7 @@ function readForm(data) {
   };
 }
 
-export async function handleFeedback(request, env = {}) {
+export async function handleFeedback(request, env = {}, ctx) {
   const accept = (request.headers.get("accept") || "").toLowerCase();
   const type = (request.headers.get("content-type") || "").toLowerCase();
   const asJson = type.includes("application/json") || accept.includes("application/json");
@@ -333,6 +374,10 @@ export async function handleFeedback(request, env = {}) {
     const failure = resendFailure(upstream.status, result);
     return reply({ ok: false, error: failure.error }, failure.status);
   }
+
+  const sheetWrite = recordSheet(env, sheetRow(firstName, answers, email));
+  if (ctx && typeof ctx.waitUntil === "function") ctx.waitUntil(sheetWrite);
+  else await sheetWrite;
 
   return reply({ ok: true }, 200);
 }

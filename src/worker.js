@@ -5,10 +5,10 @@ function isFeedbackPath(pathname) {
 }
 
 export default {
-  async fetch(request, env) {
+  async fetch(request, env, ctx) {
     const url = new URL(request.url);
     if (isFeedbackPath(url.pathname)) {
-      return handleFeedback(request, env);
+      return handleFeedback(request, env, ctx);
     }
 
     if (!env || !env.ASSETS || typeof env.ASSETS.fetch !== "function") {
