@@ -28,14 +28,17 @@ Cloudflare Workers Builds deploys this repository with `npx wrangler deploy`, us
 
 `CONTACT_EMAIL` and `RESEND_API_KEY` are Worker variables or secrets. Do not commit them. Mail goes out through the Resend HTTP API. The From address is Resend's free onboarding sender, `South Walton Connect <onboarding@resend.dev>`, which can deliver only to the email address on the Resend account until a domain is verified. Keep `CONTACT_EMAIL` set to that same address. After a domain is verified, change `FROM` in `src/feedback.js`.
 
+`GOOGLE_SHEETS_WEBHOOK_URL` and `GOOGLE_SHEETS_WEBHOOK_TOKEN` are Worker secrets, the same names used by Eating on 30A, Eating in Destin, and Friends of Scenic 30A. Do not commit the URL or the token. After Resend accepts the survey email, the Worker POSTs one JSON row to that webhook. Every field is a string: token, first_name, email, connection, area, congestion, watersound, needs_connector, issues, d2_opinion, protections_required, protections_effect, support_if_prohibited, limited_access_effect, closest_statement, and concerns. connection and issues are the checked labels joined with a comma. Radios are the selected label. Empty optional fields are empty strings. The honeypot is not sent. If either secret is missing, the Worker skips the sheet call and still returns success after the email. A sheet failure does not change the form response. The email is sent before the sheet request starts.
+
 After this change is merged and deployed:
 
 1. Open **Workers & Pages** → **southwaltonconnect** → **Settings** → **Variables and Secrets**.
 2. Set `CONTACT_EMAIL` for Production to the Resend account address. Add it for Preview too if that environment is offered.
 3. Add `RESEND_API_KEY` as a secret, without a `Bearer` prefix. Add it for Preview too if that environment is offered.
-4. Redeploy after saving so the Worker picks up the secret.
+4. Add `GOOGLE_SHEETS_WEBHOOK_URL` and `GOOGLE_SHEETS_WEBHOOK_TOKEN` as secrets. Add them for Preview too if that environment is offered.
+5. Redeploy after saving so the Worker picks up the secrets.
 
-Until those values are set, `POST /api/feedback` returns HTTP 503. The form still displays.
+Until `CONTACT_EMAIL` and `RESEND_API_KEY` are set, `POST /api/feedback` returns HTTP 503. The form still displays. Missing sheet secrets do not do that: the email still succeeds and the sheet call is skipped.
 
 ## How to merge
 
@@ -43,7 +46,7 @@ Until those values are set, `POST /api/feedback` returns HTTP 503. The form stil
 2. Merge it into `main`.
 3. Let the existing **southwaltonconnect** Workers Builds project deploy `main`. Do not create a second Worker or change the project name.
 4. Attach `southwaltonconnect.com` to that Worker if it is not already the custom domain.
-5. Set the two secrets above, then submit a test response on `/public-feedback/`.
+5. Set `CONTACT_EMAIL`, `RESEND_API_KEY`, `GOOGLE_SHEETS_WEBHOOK_URL`, and `GOOGLE_SHEETS_WEBHOOK_TOKEN`, then submit a test response on `/public-feedback/`.
 
 ## Pages
 

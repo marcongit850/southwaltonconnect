@@ -3,7 +3,8 @@
   // the existing Workers Builds project keeps deploying this repository.
   // An assets-only Worker has no script, so Cloudflare refuses variables
   // ("Variables cannot be added to a Worker that only has static assets").
-  // "main" is what makes CONTACT_EMAIL and RESEND_API_KEY possible.
+  // "main" is what makes CONTACT_EMAIL, RESEND_API_KEY,
+  // GOOGLE_SHEETS_WEBHOOK_URL, and GOOGLE_SHEETS_WEBHOOK_TOKEN possible.
   // Do not put those values here.
   "name": "southwaltonconnect",
   "main": "src/worker.js",
