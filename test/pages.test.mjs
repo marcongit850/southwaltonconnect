@@ -10,6 +10,7 @@ const files = {
   blog: "blog/index.html",
   post: "blog/public-input-on-south-walton-connector-road-development/index.html",
   header: "header.js",
+  feedbackHtml: "src/feedback.js",
   wrangler: "wrangler.jsonc",
   pkg: "package.json",
 };
@@ -58,13 +59,27 @@ assert.match(text.blog, /Understanding the South Walton Connector Road Project/)
 assert.match(text.post, /did not mean the road was approved for construction/);
 assert.match(text.post, /permanently protecting Point Washington State Forest/);
 
+const gaLoader = '<script async src="https://www.googletagmanager.com/gtag/js?id=G-NZCX1364EE"></script>';
+const gaConfig = "gtag('config', 'G-NZCX1364EE');";
+
 for (const key of ["home", "environment", "documents", "faq", "feedback", "blog", "post"]) {
   assert.match(text[key], /header\.js/);
   assert.match(text[key], /footer\.js/);
   assert.equal(text[key].includes("lorem ipsum"), false);
   assert.equal(text[key].includes("TODO"), false);
   assert.equal(text[key].includes("placeholder"), false);
+  const head = text[key].slice(text[key].indexOf("<head>"), text[key].indexOf("</head>"));
+  assert.equal((head.match(/G-NZCX1364EE/g) || []).length, 2, key + " measurement id");
+  assert.equal(head.includes(gaLoader), true, key);
+  assert.equal(head.includes(gaConfig), true, key);
+  assert.equal(head.includes("googletagmanager.com"), true, key);
+  assert.equal((text[key].match(/G-NZCX1364EE/g) || []).length, 2, key + " id outside head");
 }
+
+const feedbackHead = text.feedbackHtml.slice(text.feedbackHtml.indexOf("<head>"), text.feedbackHtml.indexOf("</head>"));
+assert.equal((feedbackHead.match(/G-NZCX1364EE/g) || []).length, 2);
+assert.equal(feedbackHead.includes(gaLoader), true);
+assert.equal(feedbackHead.includes(gaConfig), true);
 
 assert.match(text.header, /Home/);
 assert.match(text.header, /Environment/);
