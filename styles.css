@@ -524,6 +524,133 @@ p { text-wrap: pretty; }
   border-radius: 10px;
 }
 
+.corridor-section {
+  padding-top: 2.5rem;
+  padding-bottom: 1rem;
+  scroll-margin-top: 5.4rem;
+}
+.corridor-lead,
+.corridor-note {
+  max-width: 46rem;
+  margin: 0 0 1rem;
+  color: white;
+  font-size: 1.05rem;
+}
+.corridor-note { margin: 0.9rem 0 0; color: var(--muted); font-size: 0.98rem; }
+.corridor-frame {
+  position: relative;
+  isolation: isolate;
+  background: #081c16;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.corridor-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  padding: 0.75rem 0.75rem 0.15rem;
+}
+.corridor-tools button {
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 600;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  background: transparent;
+  color: white;
+  padding: 0.38rem 0.8rem;
+  cursor: pointer;
+}
+.corridor-tools button[aria-pressed="true"] {
+  background: var(--lime);
+  color: var(--forest);
+  border-color: var(--lime);
+}
+#corridor-map {
+  height: min(68vh, 620px);
+  min-height: 440px;
+  width: 100%;
+  background: #12382c;
+}
+.corridor-key {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0.55rem 0.85rem 0.8rem;
+  color: white;
+  font-size: 0.9rem;
+}
+.corridor-key li { display: inline-flex; align-items: center; gap: 0.4rem; }
+.corridor-key i {
+  width: 1.15rem;
+  height: 0.38rem;
+  border-radius: 2px;
+  display: inline-block;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.35);
+}
+.swatch.us98 { background: #2f7bff; }
+.swatch.scenic { background: #3dde6a; }
+.swatch.connector { background: #ff9a1f; }
+.swatch.d2 {
+  background: repeating-linear-gradient(90deg, #ff3a2f 0 7px, transparent 7px 11px);
+  box-shadow: none;
+}
+.swatch.land { background: rgba(31, 157, 74, 0.85); height: 0.7rem; border-radius: 2px; }
+.map-tag {
+  width: max-content !important;
+  height: auto !important;
+  background: transparent;
+  border: 0;
+  color: #fff;
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 1.2;
+  white-space: nowrap;
+  text-shadow: 0 1px 2px #000, 0 0 6px #000;
+}
+.map-tag.mile {
+  background: rgba(255, 255, 255, 0.94);
+  color: #102018;
+  text-shadow: none;
+  border-radius: 999px;
+  padding: 0.12rem 0.45rem;
+  font-size: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
+}
+.map-tag.water {
+  font-style: italic;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: #e7fbff;
+}
+.map-tag.park {
+  font-size: 11px;
+  font-weight: 600;
+  max-width: 9.5rem;
+  white-space: normal;
+  text-align: center;
+}
+.map-tag.place { font-size: 15px; }
+.corridor-section h2 { font-size: clamp(1.7rem, 6.4vw, 2.5rem); }
+.corridor-frame .leaflet-control-attribution {
+  font-size: 10px;
+  line-height: 1.25;
+  max-width: min(28rem, 78%);
+  white-space: normal;
+  background: rgba(255, 255, 255, 0.88);
+}
+@media (max-width: 700px) {
+  #corridor-map { height: 68vh; min-height: 420px; }
+  .map-tag.park { font-size: 10px; max-width: 7.5rem; }
+  .map-tag.place { font-size: 13px; }
+  .map-tag.mile { font-size: 11px; }
+}
+
 @media (max-width: 1039px) {
   .hero-visual {
     min-height: 34rem;

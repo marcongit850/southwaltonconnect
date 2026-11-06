@@ -88,6 +88,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@600;700&amp;family=Wix+Madefor+Text:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
 </head>
 <body>
 <script src="header.js"></script>
@@ -107,6 +108,29 @@
       <video class="hero-side-video" controls playsinline preload="metadata" poster="images/southwalton-hero-side-poster.jpg" width="720" height="1280" aria-label="A pine forest road in South Walton">
         <source src="images/southwalton-hero-side.mp4" type="video/mp4">
       </video>
+    </div>
+  </section>
+
+  <section class="section corridor-section" id="corridor">
+    <div class="wrap">
+      <h2>How 30A Connects to US 98</h2>
+      <p class="corridor-lead">This map shows existing routes and the proposed South Walton Connector.</p>
+      <div class="corridor-frame">
+        <div class="corridor-tools" role="group" aria-label="Map layers">
+          <button type="button" aria-pressed="true" data-layer="connectors">Existing connectors</button>
+          <button type="button" aria-pressed="true" data-layer="d2">Proposed D2</button>
+          <button type="button" aria-pressed="true" data-layer="conservation">Conservation lands</button>
+        </div>
+        <div id="corridor-map" role="region" aria-label="Satellite map from Destin to Inlet Beach showing US 98, Scenic 30A, existing connectors, and proposed D2"></div>
+        <ul class="corridor-key">
+          <li><i class="swatch us98" aria-hidden="true"></i> US 98</li>
+          <li><i class="swatch scenic" aria-hidden="true"></i> Scenic 30A</li>
+          <li><i class="swatch connector" aria-hidden="true"></i> Existing connectors</li>
+          <li><i class="swatch d2" aria-hidden="true"></i> Proposed D2</li>
+          <li><i class="swatch land" aria-hidden="true"></i> Conservation land</li>
+        </ul>
+      </div>
+      <p class="corridor-note">Distances follow Scenic 30A between the junctions: 3.5 miles from the west junction at Destin to CR 393, then 2.2 miles to CR 83, 2.1 miles to CR 283, 2.7 miles to CR 395, 6.2 miles to Watersound Parkway, and 1.8 miles to the east junction at Inlet Beach. Proposed D2 would meet Scenic 30A between CR 395 and Watersound Parkway. The water south of the roads is the Gulf of America.</p>
     </div>
   </section>
 
@@ -194,5 +218,7 @@
 </main>
 <script src="footer.js"></script>
 <script src="site.js"></script>
+<script src="vendor/leaflet/leaflet.js"></script>
+<script src="corridor-map.js"></script>
 </body>
 </html>
