@@ -236,17 +236,23 @@ p { text-wrap: pretty; }
   padding: 4.5rem 0 5rem;
   overflow: hidden;
 }
-.hero-bg {
+.hero-bg,
+.hero-d2 {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   max-width: none;
-  object-fit: cover;
-  object-position: center 46%;
-  opacity: 0.31;
   z-index: -1;
   pointer-events: none;
+}
+.hero-bg {
+  object-fit: cover;
+  object-position: 66% 50%;
+  opacity: 0.31;
+}
+.hero-d2 {
+  background: url("images/hero-d2.svg") 66% 50% / cover no-repeat;
 }
 .hero-copy { max-width: 46rem; }
 .hero-side {
@@ -266,7 +272,8 @@ p { text-wrap: pretty; }
 @media (min-width: 1040px) {
   .hero {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) min(calc((100dvh - 4.6rem) * 9 / 16), 42vw);
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
     min-height: calc(100svh - 4.6rem);
     min-height: calc(100dvh - 4.6rem);
   }
@@ -282,18 +289,20 @@ p { text-wrap: pretty; }
   }
   .hero-side {
     position: relative;
-    padding: 0;
-    min-height: 34rem;
+    padding: 1.25rem 1.35rem 1.25rem 0.35rem;
+    min-height: 0;
     background: transparent;
+    align-self: center;
   }
   .hero-side-video {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
+    position: relative;
+    inset: auto;
+    display: block;
+    width: min(19rem, 28vw, calc(70dvh * 9 / 16));
+    height: auto;
     max-width: none;
-    aspect-ratio: auto;
-    border-radius: 0;
+    aspect-ratio: 9 / 16;
+    border-radius: 12px;
     object-fit: cover;
     object-position: center;
   }
